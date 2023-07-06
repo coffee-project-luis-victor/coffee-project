@@ -1,18 +1,23 @@
 "use strict"
+const submitButton = document.querySelector('#submit');
+const roastSelection = document.querySelector('#roast-selection');
+const searchBar = document.getElementById('search-input')
+roastSelection.addEventListener('change', updateCoffees)
+submitButton.addEventListener('click', updateCoffees);
+
 
 function renderCoffee(coffee) {
-    var html = '<tr class="coffee">';
-    html += '<td>' + coffee.id + '</td>';
-    html += '<td>' + coffee.name + '</td>';
-    html += '<td>' + coffee.roast + '</td>';
-    html += '</tr>';
+    let html = '<div class="coffee">';
+    html += '<h2>' + coffee.name + '</h2>';
+    html += '<p>' + coffee.roast + '</p>';
+    html += '</div>';
 
     return html;
 }
 
 function renderCoffees(coffees) {
-    var html = '';
-    for(var i = coffees.length - 1; i >= 0; i--) {
+    let html = '';
+    for(let i = 0; i < coffees.length; i++) {
         html += renderCoffee(coffees[i]);
     }
     return html;
@@ -20,18 +25,44 @@ function renderCoffees(coffees) {
 
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
-    var selectedRoast = roastSelection.value;
-    var filteredCoffees = [];
-    coffees.forEach(function(coffee) {
-        if (coffee.roast === selectedRoast) {
-            filteredCoffees.push(coffee);
-        }
-    });
-    tbody.innerHTML = renderCoffees(filteredCoffees);
-}
+    let selectedRoast = roastSelection.value.toLowerCase();
+    let searchInput = searchBar.value;
 
+    let filteredCoffees = coffees;
+    if (selectedRoast !== "all") {
+
+        filteredCoffees = filteredCoffees.filter(function(coffee) {
+            return coffee.roast.toLowerCase() === selectedRoast;
+        })
+
+    }
+    if (searchInput !== '') {
+        filteredCoffees = filteredCoffees.filter(function(coffee) {
+            return coffee.name.toLowerCase().includes(searchInput);
+        })
+    }
+    if (filteredCoffees.length === 0) {
+        coffeeCards.innerHTML =
+            `<h3>No coffees were found</h3>`
+    } else {
+        coffeeCards.innerHTML = renderCoffees(filteredCoffees)
+
+    }
+
+    function addNewCoffee() {
+        e.preventDefault();
+        let newCoffeeName = document.getElementById('add-coffee-input')
+
+
+
+    }
+
+
+
+
+}
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
-var coffees = [
+const coffees = [
     {id: 1, name: 'Light City', roast: 'light'},
     {id: 2, name: 'Half City', roast: 'light'},
     {id: 3, name: 'Cinnamon', roast: 'light'},
@@ -48,10 +79,7 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
-var tbody = document.querySelector('#coffees');
-var submitButton = document.querySelector('#submit');
-var roastSelection = document.querySelector('#roast-selection');
+const coffeeCards = document.querySelector('#coffees');
 
-tbody.innerHTML = renderCoffees(coffees);
-
-submitButton.addEventListener('click', updateCoffees);
+coffeeCards.innerHTML = renderCoffees(coffees);
+searchBar.addEventListener('input', updateCoffees);
