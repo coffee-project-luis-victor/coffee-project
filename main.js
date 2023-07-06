@@ -2,9 +2,12 @@
 const submitButton = document.querySelector('#submit');
 const roastSelection = document.querySelector('#roast-selection');
 const searchBar = document.getElementById('search-input')
+const newCoffeeSubmitButton = document.getElementById("submit-new-coffee")
+let newRoast = document.getElementById('new-roast-selection').value;
 roastSelection.addEventListener('change', updateCoffees)
 submitButton.addEventListener('click', updateCoffees);
 
+const coffeeCards = document.querySelector('#coffees');
 
 function renderCoffee(coffee) {
     let html = '<div class="coffee">';
@@ -23,21 +26,24 @@ function renderCoffees(coffees) {
     return html;
 }
 
-function updateCoffees(e) {
-    e.preventDefault(); // don't submit the form, we just want to update the data
+// from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
+async function updateCoffees(e) {
+    if (e) {
+        e.preventDefault(); // don't submit the form, we just want to update the data
+    }
     let selectedRoast = roastSelection.value.toLowerCase();
     let searchInput = searchBar.value;
-
+    let coffees = await getCoffees();
     let filteredCoffees = coffees;
     if (selectedRoast !== "all") {
 
-        filteredCoffees = filteredCoffees.filter(function(coffee) {
+        filteredCoffees = filteredCoffees.filter(function (coffee) {
             return coffee.roast.toLowerCase() === selectedRoast;
         })
 
     }
     if (searchInput !== '') {
-        filteredCoffees = filteredCoffees.filter(function(coffee) {
+        filteredCoffees = filteredCoffees.filter(function (coffee) {
             return coffee.name.toLowerCase().includes(searchInput);
         })
     }
@@ -48,38 +54,42 @@ function updateCoffees(e) {
         coffeeCards.innerHTML = renderCoffees(filteredCoffees)
 
     }
-
-    function addNewCoffee() {
-        e.preventDefault();
-        let newCoffeeName = document.getElementById('add-coffee-input')
-
-
-
-    }
-
-
-
-
 }
-// from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
-const coffees = [
-    {id: 1, name: 'Light City', roast: 'light'},
-    {id: 2, name: 'Half City', roast: 'light'},
-    {id: 3, name: 'Cinnamon', roast: 'light'},
-    {id: 4, name: 'City', roast: 'medium'},
-    {id: 5, name: 'American', roast: 'medium'},
-    {id: 6, name: 'Breakfast', roast: 'medium'},
-    {id: 7, name: 'High', roast: 'dark'},
-    {id: 8, name: 'Continental', roast: 'dark'},
-    {id: 9, name: 'New Orleans', roast: 'dark'},
-    {id: 10, name: 'European', roast: 'dark'},
-    {id: 11, name: 'Espresso', roast: 'dark'},
-    {id: 12, name: 'Viennese', roast: 'dark'},
-    {id: 13, name: 'Italian', roast: 'dark'},
-    {id: 14, name: 'French', roast: 'dark'},
-];
+//  ------------------------------------------- ADD COFFEE -----------------------------------
 
-const coffeeCards = document.querySelector('#coffees');
+async function addCoffees(e) {
+        e.preventDefault();
+        const newCoffeeName = document.getElementById('add-coffee-input').value.toLowerCase();
+        let newRoast = document.getElementById('new-roast-selection').value;
+        let coffee = {
+                    // id: identifier,
+                    name: newCoffeeName,
+                    roast: newRoast,
+        }
+        console.log(coffee)
+       let coffeeJSON = JSON.stringify(coffee);
+        let options = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: coffeeJSON
+        }
+        let response = await fetch('http://localhost:3000/coffees', options)
+        updateCoffees();
+}
+newCoffeeSubmitButton.addEventListener('click', addCoffees)
+async function getCoffees(){
+    let options = {
+        method: "GET"
+    }
+    let response = await fetch('http://localhost:3000/coffees', options);
+    let data = await response.json();
+    return data;
+}
+(async ()=>{
+    let coffees = await getCoffees();
+    coffeeCards.innerHTML = renderCoffees(coffees);
+})();
 
-coffeeCards.innerHTML = renderCoffees(coffees);
 searchBar.addEventListener('input', updateCoffees);
