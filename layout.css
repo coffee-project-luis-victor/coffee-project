@@ -140,7 +140,9 @@
 .d-flex.full-width {
     width: 100%;
 }
-
+.flex-wrap {
+    flex-wrap: wrap;
+}
 /*
     Misc. utility classes
 */

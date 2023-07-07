@@ -1,5 +1,10 @@
+
+
 .page-wrapper {
     font-family: fantasy;
+
+
+
 }
 
 .text-center {
@@ -25,10 +30,28 @@
      background-color: #3d89cb;
      border-radius: 5px;
      display: block;
+     border: none;
  }
 
  .width-100 {
      width: 100%;
  }
 
+.displayed-coffees {
+    align-items: start;
+    max-height: 100vh;
+}
 
+.add-a-coffee {
+    margin-bottom: 0;
+}
+
+form {
+
+}
+
+.coffee {
+    text-align: center;
+    width: calc(50% - 10px);
+
+}

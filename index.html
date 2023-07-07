@@ -8,11 +8,14 @@
 </head>
 <body>
 <div class="page-wrapper">
+    <nav>
+
+    </nav>
     <div class="container">
         <h1 class="text-center">Coffee!</h1>
         <div class="row">
             <div class="column">
-                <div id="coffees"></div>
+                <div class="d-flex flex-wrap justify-space-between coffees" id="coffees"></div>
             </div>
             <div class="column gap-15 ">
                 <form class="column align-center gap-50">
@@ -31,7 +34,7 @@
                     </div>
                         <input class="submit-button" id="submit" type="submit"/>
                     <!-- Add Coffee  ----------------------------------------------------------->
-                    <h2>Add a Coffee</h2>
+                    <h2 class="add-a-coffee">Add a Coffee</h2>
                     <div class="roast-list">
                         <label for="new-roast-selection">Roast</label><br>
                         <select class="roast-list" id="new-roast-selection">
