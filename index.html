@@ -3,22 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
-<div class="page-wrapper">
-    <nav>
+<div class="leaderboard-wrapper">
+    <div class="leaderboard">
 
-    </nav>
-    <div class="container">
-        <h1 class="text-center">Coffee!</h1>
+    </div>
+</div>
+<div class="page-wrapper">
+    <nav class="container nav-bar">
         <div class="row">
+            <div class="column gap-100">
+                <ul class="column align-center gap-25 ">
+                    <li class="nav-list"><img class="coffee-logo" src="img/img_1.png"/></li>
+                    <li class="nav-list"></li>
+                    <li class="nav-list"></li>
+                    <li class="nav-list"></li>
+                </ul>
+            <div class="column align-center ">
+                <ul class="column gap-10">
+                    <li>About</li>
+                    <li>Contact</li>
+                    <li>Support</li>
+                    <li>Help</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container main-content">
+        <h1 class="text-center class1">SPACE BREW</h1>
+        <div class="row gap-30">
             <div class="column">
                 <div class="d-flex flex-wrap justify-space-between coffees" id="coffees"></div>
             </div>
-            <div class="column gap-15 ">
-                <form class="column align-center gap-50">
+            <div class="column  gap-15 ">
+                <form class="column align-center gap-50 margin">
                     <div class="roast-list">
                         <label for="roast-selection">Roast</label><br>
                         <select class="roast-list" id="roast-selection">
@@ -28,11 +50,11 @@
                         <option>dark</option>
                         </select>
                     </div>
-                    <div class="width-100">
-                    <label for="search-input">Coffee Name</label>
+                    <div class="column align-center coffee-name">
+                        <label for="search-input">Coffee Name</label>
                         <input class="coffee-search-box" type="text" id="search-input"  placeholder="Search coffee"/>
+                        <input class="submit-button hide" id="submit" type="submit"/>
                     </div>
-                        <input class="submit-button" id="submit" type="submit"/>
                     <!-- Add Coffee  ----------------------------------------------------------->
                     <h2 class="add-a-coffee">Add a Coffee</h2>
                     <div class="roast-list">
@@ -43,17 +65,17 @@
                             <option>dark</option>
                         </select>
                     </div>
-                    <div class="width-100">
+                    <div class="column">
                         <label for="add-coffee-input">Coffee Name</label>
                         <input class="coffee-search-box" type="text" id="add-coffee-input"  placeholder="Add coffee"/>
+                        <input class="submit-button " id="submit-new-coffee" type="submit"/>
                     </div>
-                    <input class="submit-button" id="submit-new-coffee" type="submit"/>
                 </form>
 
             </div>
         </div>
     </div>
 </div>
-<script src="main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

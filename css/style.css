@@ -1,0 +1,207 @@
+.page-wrapper {
+    font-family: fantasy;
+    background: none;
+
+}
+
+
+body {
+    background-image: url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGc2eDV4NjZsempia2lmaDk4anVvODBycHFydmZ5N2VuN3BrdGNvbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/N92U5rWN1mAN7lCftz/giphy.gif");
+    background-size: contain;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.leaderboard-wrapper {
+    top: 0;
+    left: 0;
+    width: 97%;
+    height: 400px; /* Adjust the height of the leaderboard */
+    overflow: hidden;
+
+}
+
+.leaderboard {
+    height: 100%;
+    width: auto;
+    background-color: black;
+    overflow: hidden;
+    margin-left: 166px;
+    margin-right: 66px;
+    background-image: url("img/Untitled-1.png");
+    background-position: center bottom;
+    background-attachment: fixed;
+
+
+}
+
+
+
+.main-content {
+    margin-left: 66px;
+}
+
+h1 {
+    color: white;
+    text-shadow: 3px 3px 20px red;
+    font-size: 5rem;
+    font-family: "Roboto Light";
+
+}
+h2 {
+    color: white;
+}
+
+p {
+    color: white;
+}
+.text-center {
+    text-align: center;
+}
+
+.roast-list {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+
+}
+
+.coffee-search-box {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0;
+}
+ .submit-button {
+    width: 50%;
+    height: 40px;
+    background-color: red;
+    border-radius: 5px;
+    display: block;
+    border: none;
+    box-shadow: 0px 0px 15px white;
+    align-self: center;
+    margin-top: 45px;
+
+ }
+
+ .coffee-name {
+     width: 100%;
+
+ }
+
+.displayed-coffees {
+    align-items: start;
+    max-height: 100px;
+
+
+}
+label {
+    color: red;
+}
+.add-a-coffee {
+    margin-bottom: 0;
+}
+
+form {
+    background-size: 100%;
+    background-image: url("img/space.png");
+    background-attachment: fixed;
+
+}
+.col {
+    display: flex;
+    flex-direction: column;
+    flex: initial;
+}
+
+
+
+
+.coffee {
+    text-align: center;
+    width: calc(50% - 10px);
+    background-color: rgba(0, 0, 0) ;
+    border: dashed 2px  #00d3ff;
+    box-shadow: 0px 0px 10px #00d3ff;
+    background-size: 100%;
+    background-image: url("space.png");
+    background-attachment: fixed;
+
+}
+
+.hide {
+    width: 0;
+    height: 0;
+    display: none;
+    border: none;
+}
+
+
+
+.nav-bar {
+    background-color: rgb(0, 0, 0, 0);
+    width: 66px;
+    height: 100vh; /* Adjust the height as needed */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+.nav-bar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-bar li {
+    color: #ff01c1;
+    text-shadow: 3px 2px 4px #ff01c1;
+    list-style: none;
+}
+
+.nav-bar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.coffee-logo {
+    display: flex;
+    height: 50px;
+    width: 50px;
+    align-self: center;
+}
+
+
+/*----------------------------------------------------------*/
+
+.light-roast-mode {
+    background-color: #fff;
+    color: #fff;
+}
+
+.class1 h1 {
+    color: Red;
+}
+
+.light-mode button {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Dark Mode styles */
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode h1 {
+    color: #fff;
+}
+
+.dark-mode button {
+    background-color: #333;
+    color: #fff;
+}

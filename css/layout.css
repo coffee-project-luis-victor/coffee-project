@@ -68,6 +68,9 @@
 .row.justify-space-between {
     justify-content: space-between;
 }
+.row.justify-space-evenly {
+    justify-content: space-evenly;
+}
 .row.no-padding {
     padding: unset;
 }
@@ -166,4 +169,7 @@
 }
 .gap-50 {
     gap: 50px;
+}
+.gap-100 {
+    gap: 100px;
 }
